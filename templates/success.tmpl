@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{{.title}}</title>
+</head>
+<body>
+  <h1>success</h1>
+  <p>newest user: {{.firstname}} {{.lastname}}</p>
+  <ul>
+    {{ range .registrations }}
+      <li>{{ .Lastname }}, {{ .Firstname }}</li>
+    {{ end }}
+  </ul>
+</body>
+</html>

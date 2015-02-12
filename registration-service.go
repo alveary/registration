@@ -1,6 +1,8 @@
 package main
 
 import (
+	"registration-service/registrations"
+
 	"github.com/gin-gonic/gin"
 )
 
@@ -9,6 +11,8 @@ func main() {
 
 	r.Use(gin.Logger())
 	r.Use(gin.Recovery())
+
+	var regs registrations.Registrations
 
 	r.Static("/assets", "./assets")
 
@@ -25,8 +29,13 @@ func main() {
 		firstname := c.Request.Form.Get("firstname")
 		lastname := c.Request.Form.Get("lastname")
 
-		message := "Hello " + firstname + " " + lastname
-		c.String(200, message)
+		reg := registrations.Registration{firstname, lastname}
+
+		regs.Push(reg)
+
+		// message := "Hello " + firstname + " " + lastname + " (RegistrationCount is now " + fmt.Sprintf("%v", regs.Len()) + ")"
+		obj := gin.H{"firstname": firstname, "lastname": lastname, "registrations": regs}
+		c.HTML(200, "success.tmpl", obj)
 	})
 
 	r.Run(":3000")
