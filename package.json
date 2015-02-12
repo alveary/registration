@@ -1,0 +1,21 @@
+{
+  "name": "registration-service",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "gulp": "^3.8.11",
+    "gulp-stylus": "^2.0.0"
+  },
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "gulp": "^3.8.11",
+    "gulp-stylus": "^2.0.0",
+    "kouto-swiss": "^0.11.7"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
