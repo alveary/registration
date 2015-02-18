@@ -1,4 +1,5 @@
 gom 'github.com/gin-gonic/gin'
+gom 'github.com/fzzy/radix'
 
 group :test do
   gom 'github.com/stretchr/testify'
