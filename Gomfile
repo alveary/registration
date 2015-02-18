@@ -1,0 +1,6 @@
+gom 'github.com/gin-gonic/gin'
+
+group :test do
+  gom 'github.com/stretchr/testify'
+  gom 'github.com/mechanoid/goquery'
+end
