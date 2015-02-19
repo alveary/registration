@@ -27,6 +27,7 @@ func withAppSetup(engine *gin.Engine) *gin.Engine {
 type Registration struct {
 	Firstname string
 	Lastname  string
+	Email     string
 }
 
 func registrationFromRequest(request *http.Request) (registration Registration) {
@@ -34,8 +35,9 @@ func registrationFromRequest(request *http.Request) (registration Registration) 
 
 	firstname := request.Form.Get("firstname")
 	lastname := request.Form.Get("lastname")
+	email := request.Form.Get("email")
 
-	registration = Registration{firstname, lastname}
+	registration = Registration{firstname, lastname, email}
 
 	return registration
 }
@@ -57,7 +59,6 @@ func AppEngine() *gin.Engine {
 
 		registrations.Push(registration)
 
-		// message := "Hello " + firstname + " " + lastname + " (RegistrationCount is now " + fmt.Sprintf("%v", regs.Len()) + ")"
 		obj := gin.H{"registrations": registrations}
 		c.HTML(200, "success.tmpl", obj)
 	})
