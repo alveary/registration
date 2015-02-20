@@ -1,8 +1,0 @@
-gom 'github.com/gin-gonic/gin'
-gom 'github.com/mechanoid/registration/stack'
-
-group :test do
-  gom 'testing'
-  gom 'github.com/stretchr/testify'
-  gom 'github.com/mechanoid/goquery'
-end
