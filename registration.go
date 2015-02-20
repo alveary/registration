@@ -2,7 +2,8 @@ package main
 
 import (
 	"net/http"
-	"registration/stack"
+
+	"github.com/mechanoid/registration/stack"
 
 	"github.com/gin-gonic/gin"
 )
