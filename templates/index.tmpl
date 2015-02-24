@@ -11,17 +11,17 @@
 </head>
 <body>
   <form action="/" method="POST" class="test-registration-form">
-    <div class='{{if .Errors.firstname}}error{{end}}'>
+    <div class="{{if .Errors.firstname}}error{{end}}">
       <input type="text" name="firstname" value="{{.Registration.Firstname}}">
       <label for="firstname">firstname</label>
     </div>
 
-    <div class='{{if .Errors.lastname}}error{{end}}'>
+    <div class="{{if .Errors.lastname}}error{{end}}">
       <input type="text" name="lastname" value="{{.Registration.Lastname}}">
       <label for="lastname">lastname</label>
     </div>
 
-    <div class='{{if .Errors.email}}error{{end}}'>
+    <div class="{{if .Errors.email}}error{{end}}">
       <input type="text" name="email" value="{{.Registration.Email}}">
       <label for="email">email</label>
     </div>

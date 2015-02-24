@@ -1,0 +1,3 @@
+#!/bin/sh
+
+reflex -r '.*\.go' -- sh -c 'godep go test ./...'
