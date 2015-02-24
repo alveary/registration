@@ -6,13 +6,6 @@ import (
 	"github.com/martini-contrib/render"
 )
 
-// Engine for web engine setup
-func Engine() *martini.ClassicMartini {
-	m := martini.Classic()
-	m.Use(render.Renderer())
-	return m
-}
-
 // Registration is the minimal information a user has to provide
 type Registration struct {
 	Firstname string `form:"firstname" binding:"required"`
@@ -36,8 +29,10 @@ func errorMap(errors binding.Errors) map[string]string {
 	return errorMap
 }
 
-func main() {
-	m := Engine()
+// AppEngine for web engine setup
+func AppEngine() *martini.ClassicMartini {
+	m := martini.Classic()
+	m.Use(render.Renderer())
 
 	m.Get("/", func(r render.Render) {
 		r.HTML(200, "index", nil)
@@ -48,5 +43,10 @@ func main() {
 		r.HTML(200, "index", Result{Registration: registration, Errors: errorMap})
 	})
 
+	return m
+}
+
+func main() {
+	m := AppEngine()
 	m.Run()
 }
