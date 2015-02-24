@@ -1,72 +1,52 @@
 package main
 
 import (
-	"net/http"
-
-	"github.com/mechanoid/registration/stack"
-
-	"github.com/gin-gonic/gin"
+	"github.com/go-martini/martini"
+	"github.com/martini-contrib/binding"
+	"github.com/martini-contrib/render"
 )
 
-func mainEngine() (engine *gin.Engine) {
-	return gin.Default()
+// Engine for web engine setup
+func Engine() *martini.ClassicMartini {
+	m := martini.Classic()
+	m.Use(render.Renderer())
+	return m
 }
 
-func withAppSetup(engine *gin.Engine) *gin.Engine {
-	// setup basic gin default middlewares
-	engine.Use(gin.Logger())
-	engine.Use(gin.Recovery())
-
-	// add access to assets and templates
-	engine.Static("/assets", "./assets")
-	engine.LoadHTMLGlob("templates/*")
-
-	return engine
-}
-
-// Registration is a user registration, that is not submitted
+// Registration is the minimal information a user has to provide
 type Registration struct {
-	Firstname string
-	Lastname  string
-	Email     string
+	Firstname string `form:"firstname" binding:"required"`
+	Lastname  string `form:"lastname" binding:"required"`
+	Email     string `form:"email" binding:"required"`
 }
 
-func registrationFromRequest(request *http.Request) (registration Registration) {
-	request.ParseForm()
-
-	firstname := request.Form.Get("firstname")
-	lastname := request.Form.Get("lastname")
-	email := request.Form.Get("email")
-
-	registration = Registration{firstname, lastname, email}
-
-	return registration
+// Result is a combination of a given registration and the related errors
+type Result struct {
+	Registration Registration
+	Errors       map[string]string
 }
 
-// AppEngine for registrations service
-func AppEngine() *gin.Engine {
-	engine := mainEngine()
-	engine = withAppSetup(engine)
+func errorMap(errors binding.Errors) map[string]string {
+	errorMap := map[string]string{}
 
-	var registrations stack.Stack
+	for _, error := range errors {
+		errorMap[error.FieldNames[0]] = error.Message
+	}
 
-	engine.GET("/", func(c *gin.Context) {
-		obj := gin.H{"title": "Main website"}
-		c.HTML(200, "index.tmpl", obj)
-	})
-
-	engine.POST("/", func(c *gin.Context) {
-		registration := registrationFromRequest(c.Request)
-
-		registrations.Push(registration)
-
-		obj := gin.H{"registrations": registrations}
-		c.HTML(200, "success.tmpl", obj)
-	})
-
-	return engine
+	return errorMap
 }
 
 func main() {
-	AppEngine().Run(":3000")
+	m := Engine()
+
+	m.Get("/", func(r render.Render) {
+		r.HTML(200, "index", nil)
+	})
+
+	m.Post("/", binding.Form(Registration{}), func(r render.Render, errors binding.Errors, registration Registration) {
+		errorMap := errorMap(errors)
+		r.HTML(200, "index", Result{Registration: registration, Errors: errorMap})
+	})
+
+	m.Run()
 }

@@ -6,43 +6,22 @@
 	],
 	"Deps": [
 		{
-			"ImportPath": "code.google.com/p/cascadia",
-			"Comment": "null-31",
-			"Rev": "5d796540e3cb93ea0556c897e6a3c7690f614d35"
+			"ImportPath": "github.com/codegangsta/inject",
+			"Comment": "v1.0-rc1-10-g33e0aa1",
+			"Rev": "33e0aa1cb7c019ccc3fbe049a8262a6403d30504"
 		},
 		{
-			"ImportPath": "github.com/gin-gonic/gin",
-			"Comment": "v0.5",
-			"Rev": "50e7e427300a7eeeb299a4cd5bc1ebfa04d48528"
+			"ImportPath": "github.com/go-martini/martini",
+			"Comment": "v1.0-112-ga66382b",
+			"Rev": "a66382bc2bd8a3f7b3db8b874d15f3119f1927bd"
 		},
 		{
-			"ImportPath": "github.com/julienschmidt/httprouter",
-			"Rev": "bde5c16eb82ff15a1734a3818d9b9547065f65b1"
+			"ImportPath": "github.com/martini-contrib/render",
+			"Rev": "b65063311fac6cbf84d3538f5715f7847e648322"
 		},
 		{
-			"ImportPath": "github.com/mechanoid/goquery",
-			"Comment": "v0.3.2-70-gba6eb61",
-			"Rev": "ba6eb61f03d49f3a8603756d0f3a5d9f1dcbfb58"
-		},
-		{
-			"ImportPath": "github.com/mechanoid/registration/stack",
-			"Rev": "ca2c7bc7b45db039e2afcf1b3b45ea9f13b32524"
-		},
-		{
-			"ImportPath": "github.com/stretchr/testify/assert",
-			"Rev": "e4ec8152c15fc46bd5056ce65997a07c7d415325"
-		},
-		{
-			"ImportPath": "github.com/stretchr/testify/require",
-			"Rev": "e4ec8152c15fc46bd5056ce65997a07c7d415325"
-		},
-		{
-			"ImportPath": "github.com/stretchr/testify/suite",
-			"Rev": "e4ec8152c15fc46bd5056ce65997a07c7d415325"
-		},
-		{
-			"ImportPath": "golang.org/x/net/html",
-			"Rev": "59b0df9b1f7abda5aab0495ee54f408daf182ce7"
+			"ImportPath": "github.com/oxtoacart/bpool",
+			"Rev": "89c3c7319abbd041bc0a83bdf10bcb8bd445287b"
 		}
 	]
 }

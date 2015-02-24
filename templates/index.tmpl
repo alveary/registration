@@ -2,17 +2,31 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>{{.title}}</title>
+  <title>Registration</title>
+  <style>
+    .error {
+      color: red;
+    }
+  </style>
 </head>
 <body>
   <form action="/" method="POST" class="test-registration-form">
-    <input type="text" name="firstname">
-    <label for="firstname">firstname</label>
-    <input type="text" name="lastname">
-    <label for="lastname">lastname</label>
-    <input type="text" name="email">
-    <label for="email">email</label>
+    <div class='{{if .Errors.firstname}}error{{end}}'>
+      <input type="text" name="firstname" value="{{.Registration.Firstname}}">
+      <label for="firstname">firstname</label>
+    </div>
+
+    <div class='{{if .Errors.lastname}}error{{end}}'>
+      <input type="text" name="lastname" value="{{.Registration.Lastname}}">
+      <label for="lastname">lastname</label>
+    </div>
+
+    <div class='{{if .Errors.email}}error{{end}}'>
+      <input type="text" name="email" value="{{.Registration.Email}}">
+      <label for="email">email</label>
+    </div>
     <input type="submit">
   </form>
+
 </body>
 </html>

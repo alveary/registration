@@ -1,0 +1,3 @@
+#!/bin/sh
+
+reflex -r '.*\.go' -s -- sh -c 'godep go build registration.go ; codesign -s go-self-signed -f ./registration ; ./registration'
