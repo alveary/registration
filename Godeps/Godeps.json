@@ -16,12 +16,28 @@
 			"Rev": "a66382bc2bd8a3f7b3db8b874d15f3119f1927bd"
 		},
 		{
+			"ImportPath": "github.com/martini-contrib/binding",
+			"Rev": "1928ed2850e7d65507ea4198d935597e43612c7d"
+		},
+		{
 			"ImportPath": "github.com/martini-contrib/render",
 			"Rev": "b65063311fac6cbf84d3538f5715f7847e648322"
 		},
 		{
 			"ImportPath": "github.com/oxtoacart/bpool",
 			"Rev": "89c3c7319abbd041bc0a83bdf10bcb8bd445287b"
+		},
+		{
+			"ImportPath": "github.com/stretchr/testify/assert",
+			"Rev": "e4ec8152c15fc46bd5056ce65997a07c7d415325"
+		},
+		{
+			"ImportPath": "github.com/stretchr/testify/require",
+			"Rev": "e4ec8152c15fc46bd5056ce65997a07c7d415325"
+		},
+		{
+			"ImportPath": "github.com/stretchr/testify/suite",
+			"Rev": "e4ec8152c15fc46bd5056ce65997a07c7d415325"
 		}
 	]
 }
