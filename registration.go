@@ -8,9 +8,8 @@ import (
 
 // Registration is the minimal information a user has to provide
 type Registration struct {
-	Firstname string `form:"firstname" binding:"required"`
-	Lastname  string `form:"lastname" binding:"required"`
-	Email     string `form:"email" binding:"required"`
+	Email    string `form:"email" binding:"required"`
+	Password string `form:"password" binding:"required"`
 }
 
 // Result is a combination of a given registration and the related errors

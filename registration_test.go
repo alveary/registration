@@ -35,13 +35,12 @@ func (suite *RegistrationTestSuite) TestIfFormContainsRegistrationFields() {
 		log.Fatal(err)
 	}
 
-	assert.True(suite.T(), doc.Exists(".test-registration-form"), "Should have a form on it rendered")
-	assert.True(suite.T(), doc.Exists("[name=firstname]"), "Should have a field for firstname")
-	assert.True(suite.T(), doc.Exists("[name=lastname]"), "Should have a field for firstname")
+	assert.True(suite.T(), doc.Exists("[name=email]"), "Should have a field for email")
+	assert.True(suite.T(), doc.Exists("[name=password]"), "Should have a field for password")
 }
 
 func (suite *RegistrationTestSuite) TestCreatingANewRegistration() {
-	req, _ := http.NewRequest("POST", "/", strings.NewReader(`lastname=hoppe&email=falk.hoppe@innoq.com`))
+	req, _ := http.NewRequest("POST", "/", strings.NewReader(`email=falk.hoppe@innoq.com`))
 	req.Header.Set("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8")
 
 	w := httptest.NewRecorder()
@@ -53,9 +52,8 @@ func (suite *RegistrationTestSuite) TestCreatingANewRegistration() {
 		log.Fatal(err)
 	}
 
-	assert.True(suite.T(), doc.Find(".test-registration-form [name=firstname]").Parent().HasClass("error"), "Should have a form on it rendered")
-	assert.False(suite.T(), doc.Find(".test-registration-form [name=lastname]").Parent().HasClass("error"), "Should have a form on it rendered")
-	assert.False(suite.T(), doc.Find(".test-registration-form [name=email]").Parent().HasClass("error"), "Should have a form on it rendered")
+	assert.False(suite.T(), doc.Find(".test-registration-form [name=email]").Parent().HasClass("error"), "Shouldn't have an error, because email was given")
+	assert.True(suite.T(), doc.Find(".test-registration-form [name=password]").Parent().HasClass("error"), "Should have an error, because no password given")
 }
 
 // In order for 'go test' to run this suite, we need to create
