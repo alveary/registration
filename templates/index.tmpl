@@ -13,13 +13,20 @@
   <form action="/" method="POST" class="test-registration-form">
 
     <div class="{{if .Errors.email}}error{{end}}">
+      {{if .Errors.email}}
+        <p>{{.Errors.email}}</p>
+      {{end}}
       <input type="text" name="email" value="{{.Registration.Email}}">
       <label for="email">email</label>
     </div>
 
     <div class="{{if .Errors.password}}error{{end}}">
+      {{if .Errors.password}}
+        <p>{{.Errors.password}}</p>
+      {{end}}
       <input type="password" name="password" value="{{.Registration.Password}}">
       <label for="password">password</label>
+    </div>
     </div>
 
     <input type="submit">

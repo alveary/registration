@@ -21,6 +21,10 @@
 			"Rev": "a66382bc2bd8a3f7b3db8b874d15f3119f1927bd"
 		},
 		{
+			"ImportPath": "github.com/jamieomatthews/validation",
+			"Rev": "fdba2d7980640b1a6a0acea43d170b054e43130b"
+		},
+		{
 			"ImportPath": "github.com/martini-contrib/binding",
 			"Rev": "1928ed2850e7d65507ea4198d935597e43612c7d"
 		},

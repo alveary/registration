@@ -1,7 +1,10 @@
 package main
 
 import (
+	"net/http"
+
 	"github.com/go-martini/martini"
+	validation "github.com/jamieomatthews/validation"
 	"github.com/martini-contrib/binding"
 	"github.com/martini-contrib/render"
 )
@@ -10,6 +13,7 @@ import (
 type Registration struct {
 	Email    string `form:"email" binding:"required"`
 	Password string `form:"password" binding:"required"`
+	Number   int    `form:"number"`
 }
 
 // Result is a combination of a given registration and the related errors
@@ -26,6 +30,16 @@ func errorMap(errors binding.Errors) map[string]string {
 	}
 
 	return errorMap
+}
+
+// Validate password of a given registration
+func (reg Registration) Validate(errors binding.Errors, req *http.Request) binding.Errors {
+	v := validation.NewValidation(&errors, reg)
+
+	v.Validate(&reg.Email).Classify("email-class").Email()
+	v.Validate(&reg.Password).Key("password").MinLength(9)
+
+	return *v.Errors.(*binding.Errors)
 }
 
 // AppEngine for web engine setup
