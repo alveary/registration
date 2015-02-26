@@ -13,7 +13,6 @@ import (
 type Registration struct {
 	Email    string `form:"email" binding:"required"`
 	Password string `form:"password" binding:"required"`
-	Number   int    `form:"number"`
 }
 
 // Result is a combination of a given registration and the related errors
