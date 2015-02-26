@@ -2,7 +2,6 @@
 
 ![Travis-CI](https://travis-ci.org/alveary/swarm-registration.svg) by [Travis-CI](https://travis-ci.org/alveary/swarm-registration)
 
-
 ## run test suite
 
 The registration is using Godep as dependency manager,
