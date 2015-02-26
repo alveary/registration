@@ -1,6 +1,6 @@
 # [SwarmRegistration](https://swarm-registration.herokuapp.com/)
 
-![Travis-CI](https://travis-ci.org/alveary/swarm-registration.svg)
+![Travis-CI](https://travis-ci.org/alveary/swarm-registration.svg) by [Travis-CI](https://travis-ci.org/alveary/swarm-registration)
 
 
 
