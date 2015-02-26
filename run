@@ -1,3 +1,3 @@
 #!/bin/sh
 
-reflex -r '.*\.go' -s -- sh -c 'godep go build ; codesign -s go-self-signed -f ./swarm-registration ; ./swarm-registration'
+reflex -r '.*\.go' -s -- sh -c 'godep go build ; codesign -s go-self-signed -f ./swarm-registration ; ./swarm-registration -p 9000'
