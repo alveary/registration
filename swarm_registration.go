@@ -4,8 +4,10 @@ import (
 	"bytes"
 	"encoding/json"
 	"errors"
+	"flag"
 	"fmt"
 	"net/http"
+	"strconv"
 	"time"
 
 	"github.com/go-martini/martini"
@@ -119,6 +121,10 @@ func AppEngine() *martini.ClassicMartini {
 }
 
 func main() {
+	var port int
+	flag.IntVar(&port, "p", 9000, "the port number")
+	flag.Parse()
+
 	m := AppEngine()
-	m.RunOnAddr(":9000")
+	m.RunOnAddr(":" + strconv.Itoa(port))
 }
