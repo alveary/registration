@@ -1,1 +1,1 @@
-web: ./swarm-registration -port=$PORT
+web: swarm-registration -port=$PORT
