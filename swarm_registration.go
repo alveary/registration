@@ -60,5 +60,5 @@ func AppEngine() *martini.ClassicMartini {
 
 func main() {
 	m := AppEngine()
-	m.Run()
+	m.RunOnAddr(":9000")
 }
