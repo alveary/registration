@@ -1,0 +1,4 @@
+#!/bin/bash
+. ~/.bash_profile
+
+go-linux-386 build
