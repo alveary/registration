@@ -136,6 +136,7 @@ func init() {
 	}
 
 	json, _ := json.Marshal(serviceentry)
+
 	http.Post("https://alveary-overseer.herokuapp.com/", "application/json", bytes.NewBuffer(json))
 }
 
