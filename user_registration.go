@@ -120,6 +120,21 @@ func AppEngine() *martini.ClassicMartini {
 	return m
 }
 
+func init() {
+	serviceentry := struct {
+		Name  string
+		Root  string
+		Alive string
+	}{
+		"reg",
+		"https://alveary-user-registration.herokuapp.com",
+		"https://alveary-user-registration.herokuapp.com",
+	}
+
+	json, _ := json.Marshal(serviceentry)
+	http.Post("https://alveary-overseer.herokuapp.com/", "application/json", bytes.NewBuffer(json))
+}
+
 func main() {
 	var port int
 	flag.IntVar(&port, "p", 9000, "the port number")

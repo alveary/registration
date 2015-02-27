@@ -1,4 +1,4 @@
-# [UserRegistration](https://user-registration.herokuapp.com/)
+# [UserRegistration](https://alveary-user-registration.herokuapp.com/)
 
 ![Travis-CI](https://travis-ci.org/alveary/user-registration.svg) by [Travis-CI](https://travis-ci.org/alveary/user-registration)
 
