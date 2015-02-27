@@ -1,1 +1,1 @@
-web: ./user-registration -p=$PORT
+web: user-registration -p=$PORT
