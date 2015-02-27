@@ -15,37 +15,35 @@ func requestServiceAnnouncement(overseerRoot string, service []byte) {
 
 		for available {
 
+			checkchan := make(chan bool)
+			errorchan := make(chan error)
+			defer func() {
+				close(checkchan)
+				close(errorchan)
+			}()
+
 			go func() {
-				checkchan := make(chan bool)
-				errorchan := make(chan error)
-				defer func() {
-					close(checkchan)
-					close(errorchan)
-				}()
-
-				go func() {
-					resp, err := http.Post(overseerRoot, "application/json", bytes.NewBuffer(service))
-					if err != nil {
-						errorchan <- err
-						return
-					}
-					if resp.StatusCode > 299 {
-						errorchan <- fmt.Errorf("Request Error: %s", resp.Status)
-						return
-					}
-
-					checkchan <- true
-				}() // end request routine
-
-				select {
-				case <-checkchan:
-					// JUST GO ON
-				case <-errorchan:
-				case <-time.After(time.Second * 3):
+				resp, err := http.Post(overseerRoot, "application/json", bytes.NewBuffer(service))
+				if err != nil {
+					errorchan <- err
+					return
+				}
+				if resp.StatusCode > 299 {
+					errorchan <- fmt.Errorf("Request Error: %s", resp.Status)
+					return
 				}
 
-				time.Sleep(10 * time.Minute) // update registration once a minute
-			}() // end wait and handle routine (chans are cleaned here)
+				checkchan <- true
+			}() // end request routine
+
+			select {
+			case <-checkchan:
+				// JUST GO ON
+			case <-errorchan:
+			case <-time.After(time.Second * 3):
+			}
+
+			time.Sleep(10 * time.Minute) // update registration once a minute
 
 		} // end for loop
 
