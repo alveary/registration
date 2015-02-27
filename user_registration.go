@@ -96,6 +96,10 @@ func AppEngine() *martini.ClassicMartini {
 		r.HTML(200, "index", nil)
 	})
 
+	m.Head("/alive", func(resp http.ResponseWriter) {
+		resp.WriteHeader(http.StatusOK)
+	})
+
 	m.Post("/", binding.Form(Registration{}), func(r render.Render, errors binding.Errors, registration Registration, resp http.ResponseWriter) {
 		if errors.Len() > 0 {
 
@@ -128,7 +132,7 @@ func init() {
 	}{
 		"reg",
 		"https://alveary-user-registration.herokuapp.com",
-		"https://alveary-user-registration.herokuapp.com",
+		"https://alveary-user-registration.herokuapp.com/alive",
 	}
 
 	json, _ := json.Marshal(serviceentry)
