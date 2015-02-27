@@ -11,6 +11,10 @@
 			"Rev": "5d796540e3cb93ea0556c897e6a3c7690f614d35"
 		},
 		{
+			"ImportPath": "github.com/alveary/overseer/announce",
+			"Rev": "745ad3b71168f650d191a3e1e4321864bf16e441"
+		},
+		{
 			"ImportPath": "github.com/codegangsta/inject",
 			"Comment": "v1.0-rc1-10-g33e0aa1",
 			"Rev": "33e0aa1cb7c019ccc3fbe049a8262a6403d30504"

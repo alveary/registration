@@ -1,13 +1,13 @@
 package main
 
 import (
-	"bytes"
-	"encoding/json"
 	"flag"
 	"fmt"
 	"net/http"
+	"os"
 	"strconv"
 
+	"github.com/alveary/overseer/announce"
 	"github.com/alveary/user-registration/registration"
 	"github.com/go-martini/martini"
 	"github.com/martini-contrib/binding"
@@ -70,19 +70,18 @@ func AppEngine() *martini.ClassicMartini {
 }
 
 func init() {
-	serviceentry := struct {
-		Name  string
-		Root  string
-		Alive string
-	}{
-		"reg",
-		"https://alveary-user-registration.herokuapp.com",
-		"https://alveary-user-registration.herokuapp.com/alive",
+	rootURL := os.Getenv("ROOT_URL")
+	aliveURL := os.Getenv("ALIVE_URL")
+
+	if rootURL == "" || aliveURL == "" {
+		fmt.Println("ROOT_URL and/or ALIVE_URL not set")
+		return
 	}
 
-	json, _ := json.Marshal(serviceentry)
-
-	http.Post("https://alveary-overseer.herokuapp.com/", "application/json", bytes.NewBuffer(json))
+	announce.NewService(
+		"user-registration",
+		rootURL,
+		aliveURL)
 }
 
 func main() {
