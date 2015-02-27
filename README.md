@@ -1,6 +1,6 @@
-# [UserRegistration](https://swarm-registration.herokuapp.com/)
+# [UserRegistration](https://user-registration.herokuapp.com/)
 
-![Travis-CI](https://travis-ci.org/alveary/swarm-registration.svg) by [Travis-CI](https://travis-ci.org/alveary/swarm-registration)
+![Travis-CI](https://travis-ci.org/alveary/user-registration.svg) by [Travis-CI](https://travis-ci.org/alveary/user-registration)
 
 ## run test suite
 
