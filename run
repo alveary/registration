@@ -1,4 +1,8 @@
 #!/bin/sh
 
 export PORT="9000"
+export ROOT_URL="http://localhost:$PORT"
+export ALIVE_URL="http://localhost:$PORT/alive"
+export OVERSEER_ROOT="http://localhost:8999"
+
 reflex -r '.*\.go' -s -- sh -c 'godep go build ; codesign -s go-self-signed -f ./user-registration ; ./user-registration'
