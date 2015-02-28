@@ -13,14 +13,14 @@ func requestServiceAnnouncement(overseerRoot string, service []byte) {
 	go func() {
 		available := true
 
-		for available {
+		checkchan := make(chan bool)
+		errorchan := make(chan error)
+		defer func() {
+			close(checkchan)
+			close(errorchan)
+		}()
 
-			checkchan := make(chan bool)
-			errorchan := make(chan error)
-			defer func() {
-				close(checkchan)
-				close(errorchan)
-			}()
+		for available {
 
 			go func() {
 				resp, err := http.Post(overseerRoot, "application/json", bytes.NewBuffer(service))
@@ -53,9 +53,9 @@ func requestServiceAnnouncement(overseerRoot string, service []byte) {
 // NewService provides a method to attach a new Service to the overseer stack
 func NewService(serviceName string, serviceRoot string, aliveResource string) {
 	service, _ := json.Marshal(struct {
-		serviceName   string
-		serviceRoot   string
-		aliveResource string
+		Name  string `json:"name"`
+		Root  string `json:"root"`
+		Alive string `json:"alive"`
 	}{
 		serviceName,
 		serviceRoot,
@@ -69,5 +69,6 @@ func NewService(serviceName string, serviceRoot string, aliveResource string) {
 		return
 	}
 
+	fmt.Printf("Announcing new Service to Overseer: %s", service)
 	requestServiceAnnouncement(overseerRoot, service)
 }
