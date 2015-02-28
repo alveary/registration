@@ -1,3 +1,4 @@
 #!/bin/sh
 
-reflex -r '.*\.go' -s -- sh -c 'godep go build ; codesign -s go-self-signed -f ./user-registration ; ./user-registration -p 9000'
+export PORT="9000"
+reflex -r '.*\.go' -s -- sh -c 'godep go build ; codesign -s go-self-signed -f ./user-registration ; ./user-registration'

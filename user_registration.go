@@ -1,11 +1,9 @@
 package main
 
 import (
-	"flag"
 	"fmt"
 	"net/http"
 	"os"
-	"strconv"
 
 	"github.com/alveary/overseer/announce"
 	"github.com/alveary/user-registration/registration"
@@ -85,10 +83,6 @@ func init() {
 }
 
 func main() {
-	var port int
-	flag.IntVar(&port, "p", 9000, "the port number")
-	flag.Parse()
-
 	m := AppEngine()
-	m.RunOnAddr(":" + strconv.Itoa(port))
+	m.Run()
 }
