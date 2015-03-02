@@ -3,7 +3,6 @@ package main
 import (
 	"fmt"
 	"net/http"
-	"os"
 
 	"github.com/alveary/overseer/announce"
 	"github.com/alveary/user-registration/registration"
@@ -68,22 +67,7 @@ func AppEngine() *martini.ClassicMartini {
 }
 
 func init() {
-	fmt.Println("***********************************************")
-	fmt.Println(os.Environ())
-	fmt.Println("***********************************************")
-
-	rootURL := os.Getenv("ROOT_URL")
-	aliveURL := os.Getenv("ALIVE_URL")
-
-	if rootURL == "" || aliveURL == "" {
-		fmt.Println("ROOT_URL and/or ALIVE_URL not set")
-		return
-	}
-
-	announce.NewService(
-		"user-registration",
-		rootURL,
-		aliveURL)
+	announce.NewService("user-registration")
 }
 
 func main() {
