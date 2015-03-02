@@ -69,8 +69,7 @@ func AppEngine() *martini.ClassicMartini {
 
 func init() {
 	fmt.Println("***********************************************")
-	fmt.Println("HOST: " + os.Getenv("HOST"))
-	fmt.Println("PORT: " + os.Getenv("HOST"))
+	fmt.Println(os.Environ())
 	fmt.Println("***********************************************")
 
 	rootURL := os.Getenv("ROOT_URL")
