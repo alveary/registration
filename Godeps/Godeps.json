@@ -12,7 +12,7 @@
 		},
 		{
 			"ImportPath": "github.com/alveary/overseer/announce",
-			"Rev": "ff9b62144914293f89b4c76901cd46578739c9ff"
+			"Rev": "50d9353310168895ec8659bcf4ac318e9e26011e"
 		},
 		{
 			"ImportPath": "github.com/codegangsta/inject",

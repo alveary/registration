@@ -51,7 +51,16 @@ func requestServiceAnnouncement(overseerRoot string, service []byte) {
 }
 
 // NewService provides a method to attach a new Service to the overseer stack
-func NewService(serviceName string, serviceRoot string, aliveResource string) {
+func NewService(serviceName string) {
+	serviceRoot := os.Getenv("ROOT_URL")
+	aliveResource := os.Getenv("ALIVE_URL")
+	overseerRoot := os.Getenv("OVERSEER_ROOT")
+
+	if serviceRoot == "" || aliveResource == "" || overseerRoot == "" {
+		fmt.Println("ROOT_URL and/or ALIVE_URL and/or OVERSEER_ROOT not set")
+		return
+	}
+
 	service, _ := json.Marshal(struct {
 		Name  string `json:"name"`
 		Root  string `json:"root"`
@@ -61,13 +70,6 @@ func NewService(serviceName string, serviceRoot string, aliveResource string) {
 		serviceRoot,
 		aliveResource,
 	})
-
-	overseerRoot := os.Getenv("OVERSEER_ROOT")
-
-	if overseerRoot == "" {
-		fmt.Println("OVERSEER_ROOT is not set:")
-		return
-	}
 
 	fmt.Printf("Announcing new Service to Overseer: %s", service)
 	requestServiceAnnouncement(overseerRoot, service)
