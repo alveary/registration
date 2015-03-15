@@ -11,12 +11,12 @@
 			"Rev": "5d796540e3cb93ea0556c897e6a3c7690f614d35"
 		},
 		{
-			"ImportPath": "github.com/alveary/overseer/announce",
-			"Rev": "94af00fd9d19b6041476ec825944d1dd8a9233f0"
+			"ImportPath": "github.com/alveary/overseer-client/announce",
+			"Rev": "60ed342c3cbd4d20f680f763a6442d1d231db90d"
 		},
 		{
-			"ImportPath": "github.com/alveary/overseer/ask",
-			"Rev": "94af00fd9d19b6041476ec825944d1dd8a9233f0"
+			"ImportPath": "github.com/alveary/overseer-client/ask",
+			"Rev": "60ed342c3cbd4d20f680f763a6442d1d231db90d"
 		},
 		{
 			"ImportPath": "github.com/alveary/overseer/service",

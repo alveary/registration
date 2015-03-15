@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/alveary/overseer/announce"
+	"github.com/alveary/overseer-client/announce"
 	"github.com/alveary/user-registration/registration"
 	"github.com/go-martini/martini"
 	"github.com/martini-contrib/binding"
