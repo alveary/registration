@@ -7,6 +7,7 @@ import (
 	"net/http"
 	"time"
 
+	"github.com/alveary/overseer/ask"
 	"github.com/jamieomatthews/validation"
 	"github.com/martini-contrib/binding"
 )
@@ -43,8 +44,15 @@ func (registration Registration) RequestRegistration() (target string, err error
 			return
 		}
 
+		factory, err := ask.ForService("user-factory")
+
+		if err != nil {
+			failure <- err
+			return
+		}
+
 		// TODO: handle target
-		_, requestErr := http.Post("http://localhost:9001/", "application/json", bytes.NewBuffer(json))
+		_, requestErr := http.Post(factory.Root, "application/json", bytes.NewBuffer(json))
 
 		if requestErr != nil {
 			failure <- requestErr
