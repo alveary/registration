@@ -42,7 +42,12 @@ func AppEngine() *martini.ClassicMartini {
 		resp.WriteHeader(http.StatusOK)
 	})
 
-	m.Post("/", binding.Form(registration.Registration{}), func(r render.Render, errors binding.Errors, registration registration.Registration, resp http.ResponseWriter) {
+	m.Post("/", binding.Form(registration.Registration{}), func(
+		r render.Render,
+		errors binding.Errors,
+		registration registration.Registration,
+		resp http.ResponseWriter,
+	) {
 		if errors.Len() > 0 {
 
 			errorMap := errorMap(errors)
@@ -54,7 +59,6 @@ func AppEngine() *martini.ClassicMartini {
 			fmt.Println(err)
 
 			if err != nil {
-				resp.WriteHeader(http.StatusInternalServerError)
 				r.HTML(200, "failure", err)
 				return
 			}
