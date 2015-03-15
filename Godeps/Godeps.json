@@ -12,15 +12,15 @@
 		},
 		{
 			"ImportPath": "github.com/alveary/overseer-client/announce",
-			"Rev": "60ed342c3cbd4d20f680f763a6442d1d231db90d"
+			"Rev": "4ee9caf5837ffc30a61405c901d3578c81c2af95"
 		},
 		{
 			"ImportPath": "github.com/alveary/overseer-client/ask",
-			"Rev": "60ed342c3cbd4d20f680f763a6442d1d231db90d"
+			"Rev": "4ee9caf5837ffc30a61405c901d3578c81c2af95"
 		},
 		{
 			"ImportPath": "github.com/alveary/overseer/service",
-			"Rev": "94af00fd9d19b6041476ec825944d1dd8a9233f0"
+			"Rev": "e130ba505542456423b2057c64fef7a668d46eb1"
 		},
 		{
 			"ImportPath": "github.com/codegangsta/inject",
